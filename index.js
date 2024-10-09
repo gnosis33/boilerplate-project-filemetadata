@@ -7,8 +7,9 @@ var app = express();
 app.use(cors());
 app.use('/public', express.static(process.cwd() + '/public'));
 
-// Configure multer for file upload
-var upload = multer({ dest: 'uploads/' });
+// Configure multer to use memory storage
+var storage = multer.memoryStorage();
+var upload = multer({ storage: storage });
 
 app.get('/', function (req, res) {
   res.sendFile(process.cwd() + '/views/index.html');
@@ -32,4 +33,3 @@ const port = process.env.PORT || 3000;
 app.listen(port, function () {
   console.log('Your app is listening on port ' + port);
 });
-
