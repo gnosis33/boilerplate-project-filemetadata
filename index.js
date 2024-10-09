@@ -12,7 +12,7 @@ var storage = multer.memoryStorage();
 var upload = multer({ storage: storage });
 
 app.get('/', function (req, res) {
-  res.sendFile(process.cwd() + '/views/index.html');
+  res.sendFile(__dirname + '/views/index.html');
 });
 
 // File upload route
